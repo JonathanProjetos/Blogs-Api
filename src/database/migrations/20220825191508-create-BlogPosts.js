@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
       },
 
-      contente:{
+      content:{
         type: Sequelize.STRING,
         allowNull: false,
       },
