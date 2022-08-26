@@ -1,18 +1,18 @@
-const jwt = require('jsonwebtoken');
 const UserService = require('../services/UserServices');
-
-const { JWT_SECRET } = process.env;
+const jwtToken = require('../middleware/token');
 
 const UserController = {
   addUser: async (req, res) => {
     const { displayName, email, password, image } = req.body;
-
-    const token = jwt.sign({ email }, JWT_SECRET, {
-      expiresIn: '1d',
-    });
+    const token = jwtToken.generateToken(email);
 
     await UserService.addUser({ displayName, email, password, image });
     return res.status(201).json({ token });
+  },
+
+  allUsers: async (_req, res) => {
+    const result = await UserService.allUsers();
+    return res.status(200).json(result);
   },
 };
 

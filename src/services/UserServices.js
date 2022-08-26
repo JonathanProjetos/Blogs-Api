@@ -9,6 +9,14 @@ const UserServices = {
     const result = await User.create(check);
     return result;
   },
+
+  allUsers: async () => {
+    const result = await User.findAll(
+      { attributes: { exclude: ['password'] } },
+    );
+    return result;
+  },
+
 };
 
 module.exports = UserServices;
