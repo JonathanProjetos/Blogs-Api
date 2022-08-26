@@ -14,6 +14,13 @@ const UserController = {
     const result = await UserService.allUsers();
     return res.status(200).json(result);
   },
+
+  getUser: async (req, res) => {
+    const { id } = req.params;
+    const result = await UserService.getUser(id);
+    return res.status(200).json(result);
+  },
+
 };
 
 module.exports = UserController;

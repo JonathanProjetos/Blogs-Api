@@ -11,6 +11,7 @@ const port = process.env.API_PORT || 3000;
 app.post('/login', LoginController.Login);
 app.post('/user', UserController.addUser);
 app.get('/user', validateToken, UserController.allUsers);
+app.get('/user/:id', validateToken, UserController.getUser);
 
 // não remova esse endpoint
 app.get('/', (_request, response) => {
