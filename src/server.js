@@ -14,6 +14,7 @@ app.post('/user', UserController.addUser);
 app.get('/user', validateToken, UserController.allUsers);
 app.get('/user/:id', validateToken, UserController.getUser);
 app.post('/categories', validateToken, CategoryController.addCategory);
+app.get('/categories', validateToken, CategoryController.getCategory);
 
 // não remova esse endpoint
 app.get('/', (_request, response) => {

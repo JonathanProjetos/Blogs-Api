@@ -6,7 +6,13 @@ const CategoryControllers = {
     const { name } = req.body;
     console.log(name);
     const result = await CategoryServices.addCategory({ name });
-    return res.status(201).json({ id: result.insertId, name });
+    console.log(result);
+    return res.status(201).json(result.dataValues);
+  },
+
+  getCategory: async (_req, res) => {
+    const result = await CategoryServices.getCategory();
+    return res.status(200).json(result);
   },
 };
 
