@@ -1,8 +1,12 @@
 const { User } = require('../database/models');
+const joiValidate = require('../middleware/joiValidate');
 
 const UserServices = {
-  Login: async ({ email, password }) => {
-    const result = await User.create({ email, password });
+  addUser: async ({ displayName, email, password, image }) => {
+    const check = joiValidate.ValidateUser({ displayName, email, password, image });
+    const checkEmail = await User.findOne({ where: { email } });
+    if (checkEmail) throw new Error('409|User already registered');
+    const result = await User.create(check);
     return result;
   },
 };
