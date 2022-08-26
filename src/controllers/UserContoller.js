@@ -4,7 +4,7 @@ const jwtToken = require('../middleware/token');
 const UserController = {
   addUser: async (req, res) => {
     const { displayName, email, password, image } = req.body;
-    const token = jwtToken.generateToken(email);
+    const token = jwtToken.generateToken(displayName, email, password, image);
 
     await UserService.addUser({ displayName, email, password, image });
     return res.status(201).json({ token });
