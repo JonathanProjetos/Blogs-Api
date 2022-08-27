@@ -12,6 +12,11 @@ const PostCategoryController = {
       .addPostCategory({ title, content, categoryIds, email });
     return res.status(201).json(result);
   },
+
+  allPostCategory: async (_req, res) => {
+    const result = await PostCategoryServices.allPostCategory();
+    return res.status(200).json(result);
+  },
 };
 
 module.exports = PostCategoryController;
