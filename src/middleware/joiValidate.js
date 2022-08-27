@@ -14,9 +14,9 @@ const validateLogin = (dados) => {
       'string.empty': '400|Some required fields are missing',
     }),
   });
-  
+
   const { error, value } = user.validate(dados);
-  
+
   if (error) {
     throw error;
   }
@@ -38,8 +38,8 @@ const ValidateUser = (body) => {
       'string.empty': '400|Some required fields are missing',
     }),
     image: Joi.string().required().messages({ 'any.required': `400|${MESSAGE}` }),
-  }); 
-  
+  });
+
   const { error, value } = User.validate(body);
   if (error) throw error;
 
@@ -55,7 +55,28 @@ const validateCategory = (catName) => {
   });
 
   const { error, value } = Category.validate(catName);
-  
+
+  if (error) {
+    throw error;
+  }
+  return value;
+};
+
+const ValidatePostCategory = (bodyPost) => {
+  const PostCat = Joi.object({
+    categoryIds: Joi.array().items(Joi.number().required()).messages({
+      'array.includesRequiredUnknowns': `400|${MESSAGE}`,
+    }),
+    title: Joi.string().required().messages({
+      'string.empty': `400|${MESSAGE}`,
+    }),
+    content: Joi.string().required().messages({
+      'string.empty': `400|${MESSAGE}`,
+    }),
+  });
+
+  const { error, value } = PostCat.validate(bodyPost);
+
   if (error) {
     throw error;
   }
@@ -66,4 +87,5 @@ module.exports = {
   validateLogin,
   ValidateUser,
   validateCategory,
+  ValidatePostCategory,
 };

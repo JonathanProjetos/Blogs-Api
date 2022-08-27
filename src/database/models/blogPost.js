@@ -21,7 +21,6 @@ const BlogPost = (sequelize, DataTypes) => {
     },
   
     userId:{
-      allowNull: false,
       type: DataTypes.INTEGER,
       foreignKey: true,
       references: {
@@ -32,15 +31,15 @@ const BlogPost = (sequelize, DataTypes) => {
   
     published:{
       type: DataTypes.DATE,
-      allowNull: false,
     },
   
     updated:{
       type: DataTypes.DATE,
-      allowNull: false,
     }
-    
-    
+  },{
+    createdAt: 'published',
+    updatedAt: 'updated',
+    tableName: 'BlogPosts',
   });
 
   BlogPost.associate = (models) => {

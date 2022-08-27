@@ -1,7 +1,17 @@
-const jwtToken = require('./token');
+const jwtCheckUser = require('./token');
+const jwtCheckLogin = require('./tokenLogin');
 
-module.exports = (req, _res, next) => {
-  const { authorization } = req.headers;
-  jwtToken.validateToken(authorization);
-  next();
+module.exports = {
+  userToken: (req, _res, next) => {
+    const { authorization } = req.headers;
+    jwtCheckUser.validateToken(authorization);
+    next();
+  },
+
+  loginToken: (req, _res, next) => {
+    const { authorization } = req.headers;
+    const dados = jwtCheckLogin.validateTokenLogin(authorization);
+    req.email = dados;
+    next();
+  },
 };

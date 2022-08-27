@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 
 const { JWT_SECRET } = process.env;
 
-const jwtCheckUser = {
+const jwtCheckLogin = {
 
-  generateToken: (email) => {
+  generateTokenLogin: (email) => {
     const token = jwt.sign({ email }, JWT_SECRET, {
       expiresIn: '1d',
       algorithm: 'HS256',
@@ -12,7 +12,7 @@ const jwtCheckUser = {
     return token;
   },
 
-  validateToken: (token) => {
+  validateTokenLogin: (token) => {
     if (!token) throw new Error('401|Token not found');
     try {
       const test = jwt.verify(token, JWT_SECRET);
@@ -24,4 +24,4 @@ const jwtCheckUser = {
   },
 };
 
-module.exports = jwtCheckUser;
+module.exports = jwtCheckLogin;

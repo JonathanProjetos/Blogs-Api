@@ -23,6 +23,8 @@ const PostCategory = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+  },{
+    timestamps: false
   });
 
   PostCategory.associate = (models) => {
