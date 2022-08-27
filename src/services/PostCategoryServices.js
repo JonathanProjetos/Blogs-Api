@@ -10,8 +10,8 @@ const PostCategoryServices = {
       const checkId = await User.findOne({
         where: { email },
       });
-     /*  checkId.password = '123456';
-      await checkId.update(); */
+      /*  checkId.password = '123456';
+       await checkId.update(); */
       const result = await BlogPost.create(
         { title, content, userId: checkId.dataValues.id },
         { transaction },
@@ -42,12 +42,31 @@ const PostCategoryServices = {
             attributes: [],
           },
         },
-      ],
-     },
-    
-    );
+        ],
+      },
 
-return result;
+    );
+    return result;
+  },
+
+  getPostCategory: async (id) => {
+    const result = await BlogPost.findOne({
+        where: { id },
+        include: [{
+          model: User,
+          as: 'user',
+          attributes: { exclude: ['password'] },
+        },
+        {
+          model: Category,
+          as: 'categories',
+          through: {
+            attributes: [],
+          },
+        }],
+      });
+    if (!result) throw new Error('404|Post does not exist');
+    return result;
   },
 
 };

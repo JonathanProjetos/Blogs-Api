@@ -17,6 +17,12 @@ const PostCategoryController = {
     const result = await PostCategoryServices.allPostCategory();
     return res.status(200).json(result);
   },
+
+  getPostCategory: async (req, res) => {
+    const { id } = req.params;
+    const result = await PostCategoryServices.getPostCategory(id);
+    return res.status(200).json(result);
+  },
 };
 
 module.exports = PostCategoryController;
