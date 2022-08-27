@@ -23,6 +23,20 @@ const PostCategoryController = {
     const result = await PostCategoryServices.getPostCategory(id);
     return res.status(200).json(result);
   },
+
+  putPostCategory: async (req, res) => {
+    const { id } = req.params;
+    const { email } = req.email;
+    const { title, content } = req.body;
+    console.log(email);
+    const checkValuesJoi = validateJoi.ValidatePostCategory({ title, content });
+    // checkValuesJoi: valido os campos que vem do body
+    await PostCategoryServices.putPostCategory({ id, checkValuesJoi, email });
+    // PostCategoryServices.putPostCategory: método que estou usando para atualizar os dados no banco
+    const result = await PostCategoryServices.getPostCategory(id);
+    // PostCategoryServices.getPostCategory trago os dados atualizados como resposta.
+    return res.status(200).json(result);
+  },
 };
 
 module.exports = PostCategoryController;

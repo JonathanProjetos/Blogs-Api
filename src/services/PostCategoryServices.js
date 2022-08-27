@@ -51,22 +51,47 @@ const PostCategoryServices = {
 
   getPostCategory: async (id) => {
     const result = await BlogPost.findOne({
-        where: { id },
-        include: [{
-          model: User,
-          as: 'user',
-          attributes: { exclude: ['password'] },
+      where: { id },
+      include: [{
+        model: User,
+        as: 'user',
+        attributes: { exclude: ['password'] },
+      },
+      {
+        model: Category,
+        as: 'categories',
+        through: {
+          attributes: [],
         },
-        {
-          model: Category,
-          as: 'categories',
-          through: {
-            attributes: [],
-          },
-        }],
-      });
+      }],
+    });
     if (!result) throw new Error('404|Post does not exist');
     return result;
+  },
+
+  putPostCategory: async ({ id, email, checkValuesJoi }) => {
+    const { title, content } = checkValuesJoi;
+
+    const checkIdUser = await User.findOne({
+      where: { email },
+    });
+
+    const idUser = checkIdUser.dataValues.id;
+
+    const checkPostId = await BlogPost.findOne({
+      where: { id },
+    });
+
+    const idPost = checkPostId.dataValues.userId;
+   
+    if (!checkPostId) throw new Error('400|Postagem não existe');
+
+    if (Number(idUser) !== Number(idPost)) throw new Error('401|Unauthorized user');
+
+    await BlogPost.update({
+      title, content,
+    },
+      { where: { id } });
   },
 
 };

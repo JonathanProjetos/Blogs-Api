@@ -18,6 +18,7 @@ const validateLogin = (dados) => {
   const { error, value } = user.validate(dados);
 
   if (error) {
+    console.log(error);
     throw error;
   }
   return value;
@@ -83,9 +84,28 @@ const ValidatePostCategory = (bodyPost) => {
   return value;
 };
 
+const updatedPostCategory = (updateBody) => {
+  const update = Joi.object({
+    title: Joi.string().required().messages({
+      'string.empty': `400|${MESSAGE}`,
+    }),
+    content: Joi.string().required().messages({
+      'string.empty': `400|${MESSAGE}`,
+    }),
+  });
+
+  const { error, value } = update.validate(updateBody);
+
+  if (error) {
+    throw error;
+  }
+  return value;
+};
+
 module.exports = {
   validateLogin,
   ValidateUser,
   validateCategory,
   ValidatePostCategory,
+  updatedPostCategory,
 };
