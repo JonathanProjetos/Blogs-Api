@@ -10,8 +10,7 @@ const PostCategoryServices = {
       const checkId = await User.findOne({
         where: { email },
       });
-      /*  checkId.password = '123456';
-       await checkId.update(); */
+     
       const result = await BlogPost.create(
         { title, content, userId: checkId.dataValues.id },
         { transaction },
@@ -81,17 +80,38 @@ const PostCategoryServices = {
     const checkPostId = await BlogPost.findOne({
       where: { id },
     });
+    
+    if (!checkPostId) throw new Error('404|Post does not exist');
 
     const idPost = checkPostId.dataValues.userId;
    
-    if (!checkPostId) throw new Error('400|Postagem não existe');
-
     if (Number(idUser) !== Number(idPost)) throw new Error('401|Unauthorized user');
 
     await BlogPost.update({
       title, content,
     },
       { where: { id } });
+  },
+
+  deletePostCategory: async (id, email) => {
+    const checkIdUser = await User.findOne({
+      where: { email },
+    });
+
+    const idUser = checkIdUser.dataValues.id;
+
+    const checkPostId = await BlogPost.findOne({
+      where: { id },
+    });
+
+    if (!checkPostId) throw new Error('404|Post does not exist');
+    const idPost = checkPostId.dataValues.userId;
+   
+    if (Number(idUser) !== Number(idPost)) throw new Error('401|Unauthorized user');
+
+    await BlogPost.destroy({
+      where: { id },
+    });
   },
 
 };

@@ -20,6 +20,7 @@ app.post('/post', validateToken.loginToken, PostCategoryController.addPostCatego
 app.get('/post', validateToken.loginToken, PostCategoryController.allPostCategory);
 app.get('/post/:id', validateToken.loginToken, PostCategoryController.getPostCategory);
 app.put('/post/:id', validateToken.loginToken, PostCategoryController.putPostCategory);
+app.delete('/post/:id', validateToken.loginToken, PostCategoryController.deletePostCategory);
 
 // não remova esse endpoint
 app.get('/', (_request, response) => {

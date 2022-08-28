@@ -28,7 +28,6 @@ const PostCategoryController = {
     const { id } = req.params;
     const { email } = req.email;
     const { title, content } = req.body;
-    console.log(email);
     const checkValuesJoi = validateJoi.ValidatePostCategory({ title, content });
     // checkValuesJoi: valido os campos que vem do body
     await PostCategoryServices.putPostCategory({ id, checkValuesJoi, email });
@@ -36,6 +35,13 @@ const PostCategoryController = {
     const result = await PostCategoryServices.getPostCategory(id);
     // PostCategoryServices.getPostCategory trago os dados atualizados como resposta.
     return res.status(200).json(result);
+  },
+
+  deletePostCategory: async (req, res) => {
+    const { id } = req.params;
+    const { email } = req.email;
+    await PostCategoryServices.deletePostCategory(id, email);
+    return res.status(204).end();
   },
 };
 
