@@ -14,6 +14,7 @@ app.post('/login', LoginController.Login);
 app.post('/user', UserController.addUser);
 app.get('/user', validateToken.userToken, UserController.allUsers);
 app.get('/user/:id', validateToken.userToken, UserController.getUser);
+app.delete('/user/me', validateToken.userToken, UserController.deleteUser);
 app.post('/categories', validateToken.userToken, CategoryController.addCategory);
 app.get('/categories', validateToken.userToken, CategoryController.getCategory);
 app.post('/post', validateToken.loginToken, PostCategoryController.addPostCategory);
@@ -29,7 +30,6 @@ app.get('/', (_request, response) => {
 
 app.use((err, _req, res, _next) => {
   const [code, message] = err.message.split('|');
-  console.error(err);
   return res.status(code).json({ message });
 });
 

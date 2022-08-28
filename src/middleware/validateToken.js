@@ -5,7 +5,6 @@ module.exports = {
   userToken: (req, _res, next) => {
     const { authorization } = req.headers;
     const dados = jwtCheckUser.validateToken(authorization);
-    console.log('test', dados);
     req.user = dados;
     next();
   },

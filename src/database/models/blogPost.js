@@ -1,5 +1,3 @@
-
-
 const BlogPost = (sequelize, DataTypes) => {
   const BlogPost = sequelize.define('BlogPost', {
     
@@ -23,6 +21,8 @@ const BlogPost = (sequelize, DataTypes) => {
     userId:{
       type: DataTypes.INTEGER,
       foreignKey: true,
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
       references: {
         model: 'Users',
         key: 'id'

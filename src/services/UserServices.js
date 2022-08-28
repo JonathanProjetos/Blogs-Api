@@ -28,6 +28,20 @@ const UserServices = {
     return result;
   },
 
+  deleteUser: async (email) => {
+    const checkId = await User.findOne({
+      where: { email },
+    });
+    
+    if (!checkId) throw new Error('404|User does not exist');
+
+    const userId = checkId.dataValues.id;
+
+    await User.destroy({
+      where: { id: userId },
+    });
+  },
+
 };
 
 module.exports = UserServices;
