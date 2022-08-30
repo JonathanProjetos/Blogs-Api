@@ -43,6 +43,12 @@ const PostCategoryController = {
     await PostCategoryServices.deletePostCategory(id, email);
     return res.status(204).end();
   },
+
+  queryPostCategory: async (req, res) => {
+    const { q } = req.query;
+    const result = await PostCategoryServices.queryPostCategory(q);
+    return res.status(200).json(result);
+  },
 };
 
 module.exports = PostCategoryController;

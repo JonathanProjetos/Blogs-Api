@@ -17,6 +17,7 @@ app.get('/user/:id', validateToken.userToken, UserController.getUser);
 app.delete('/user/me', validateToken.userToken, UserController.deleteUser);
 app.post('/categories', validateToken.userToken, CategoryController.addCategory);
 app.get('/categories', validateToken.userToken, CategoryController.getCategory);
+app.get('/post/search', validateToken.userToken, PostCategoryController.queryPostCategory);
 app.post('/post', validateToken.loginToken, PostCategoryController.addPostCategory);
 app.get('/post', validateToken.loginToken, PostCategoryController.allPostCategory);
 app.get('/post/:id', validateToken.loginToken, PostCategoryController.getPostCategory);
