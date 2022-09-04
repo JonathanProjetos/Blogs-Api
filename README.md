@@ -20,10 +20,10 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
  
  ```json
  
-  {
-    "email": "Blogs-Api@gmail.com",
-    "password": "123456"
-  }
+ {
+  "email": "lewishamilton@gmail.com",
+  "password": "123456"
+ }
  
  ```
  - Se o login foi feito com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http 200
