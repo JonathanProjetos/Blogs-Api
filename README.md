@@ -45,10 +45,10 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 
   ```json
 {
-  "displayName": "Brett Wiltshire",
-  "email": "brett@email.com",
-  "password": "123456",
-  "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+   "displayName": "Brett Wiltshire",
+   "email": "brett@email.com",
+   "password": "123456",
+   "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
 }
      
  ```
@@ -320,7 +320,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 
 > Desenvolvido em nodejs.
 
-> ORN : Sequelize
+> ORM : Sequelize
 
 > Framework utilizado: Express.
 
