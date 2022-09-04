@@ -63,7 +63,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
  
  ```
     
-#### Verbo Get : http://localhost:3000/User
+#### Verbo Get : http://localhost:3000/user
 
 ##### Esperado
 
