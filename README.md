@@ -342,7 +342,13 @@ docker-compose up -d
 ## Rodando a aplicação
 ```
 cd Blogs-Api/src/
-npm run dev
+npm start
+```
+## Comandos auxiliares
+```bash
+cd Blogs-Api/src/
+npm run drop "dropa a tabela"
+npm run seed "Alimenta a tabela com dados pré-definidos"
 ```
 
 ## Aviso Importante 
