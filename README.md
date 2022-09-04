@@ -235,7 +235,6 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 
 - Se o blog post for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http 204:
 
- ```
  
 #### Verbo Delete http://localhost:3000/user/me
 
@@ -246,7 +245,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 - Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http 204.
 
 
-#### Verbo Delete http://localhost:3000/post/search?q=:searchTerm
+#### Verbo Get http://localhost:3000/post/search?q=:searchTerm
 
 ##### Esperado
 
@@ -257,53 +256,94 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 ```json
     http://localhost:PORT/post/search?q=vamos
 ```
+- Se a buscar for pelo title o resultado retornado deverá ser conforme exibido abaixo, com um status http 200.
+
+```json
+// GET /post/search?q=Vamos que vamos
+
+[
+  {
+    "id": 2,
+    "title": "Vamos que vamos",
+    "content": "Foguete não tem ré",
+    "userId": 1,
+    "published": "2011-08-01T19:58:00.000Z",
+    "updated": "2011-08-01T19:58:51.000Z",
+    "user": {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
+    "categories": [
+      {
+        "id": 2,
+        "name": "Escola"
+      }
+    ]
+  }
+]
+
+```
+- Se a buscar for pelo content o resultado retornado deverá ser conforme exibido abaixo, com um status http 200.
+
+```json
+
+   // GET /post/search?q=Foguete não tem ré
+
+  [
+    {
+      "id": 2,
+      "title": "Vamos que vamos",
+      "content": "Foguete não tem ré",
+      "userId": 1,
+      "published": "2011-08-01T19:58:00.000Z",
+      "updated": "2011-08-01T19:58:51.000Z",
+      "user": {
+        "id": 1,
+        "displayName": "Lewis Hamilton",
+        "email": "lewishamilton@gmail.com",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+      },
+      "categories": [
+        {
+          "id": 2,
+          "name": "Escola"
+        }
+      ]
+    }
+  ]
+
+```
 
 ## Técnologias usadas
 
 > Desenvolvido em nodejs.
 
+> ORN : Sequelize
+
 > Framework utilizado: Express.
 
-> Libs: nodemon, eslint, nodemon, express-rescue, crypto-js, body-parser
+> Libs: nodemon, eslint, express-async-errors, dotenv, joi, jsonwebtoken, mysql2, sequelize-cli
 
 ## Instalando Dependências
 
 > Node
 ```bash
-cd Talker-Manager/
+cd Blogs-Api/src/
 npm install
 ``` 
 > Docker
 ```
-cd Talker-Manager/
+cd Blogs-Api/src/
 npm install
 docker-compose up -d
 ```
 ## Rodando a aplicação
 ```
-cd Talker-Manager/
+cd Blogs-Api/src/
 npm run dev
 ```
 
 ## Aviso Importante 
 Caso queira roda a aplicação via docker deverá ter o docker instalado no dispositivo, caso não esteja instalado você pode encontra como instalar neste [link](https://docs.docker.com/engine/install/ubuntu/) site oficial 
-
-
-
-
-# 🚧 README em construção 🚧
-
-<!-- Olá, Tryber!
-
-Esse é apenas um arquivo inicial para o README do seu projeto.
-
-É essencial que você preencha esse documento por conta própria, ok?
-
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
