@@ -328,20 +328,18 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 
 ## Instalando Dependências
 
-> Node
-```bash
-cd Blogs-Api/src/
-npm install
-``` 
-> Docker
+## Docker
 ```
-cd Blogs-Api/src/
-npm install
+cd Blogs-Api/
 docker-compose up -d
+docker exec -it blogs_api bash
+npm install
+npm start
 ```
-## Rodando a aplicação
+## Sem o docker
 ```
 cd Blogs-Api/src/
+npm install
 npm start
 ```
 ## Comandos auxiliares
