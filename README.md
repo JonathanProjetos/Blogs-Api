@@ -13,7 +13,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 
 ## Detalhes das rotas
 
-#### Verbo Post : http://localhost:3000/login
+#### Verbo Post : /login
 
 ##### Esperado
  - O corpo da requisição deverá seguir o formato abaixo:
@@ -37,7 +37,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
  
  ```
     
-#### Verbo Post : http://localhost:3000/user
+#### Verbo Post : /user
 
 ##### Esperado
 
@@ -63,7 +63,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
  
  ```
     
-#### Verbo Get : http://localhost:3000/user
+#### Verbo Get : /user
 
 ##### Esperado
 
@@ -82,7 +82,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
   ]
   ```
 
-#### Verbo Get : http://localhost:3000/user/:id
+#### Verbo Get : /user/:id
 
 ##### Esperado
 
@@ -98,7 +98,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
   }
  ```   
 
-#### Verbo Post : http://localhost:3000/categories
+#### Verbo Post : /categories
 
 ##### Esperado
 
@@ -111,7 +111,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 
   ```
 
-#### Verbo Get : http://localhost:3000/categories
+#### Verbo Get : /categories
 
 ##### Esperado
 
@@ -131,7 +131,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
   /* ... */
 ]
 ``` 
-#### Verbo Post : http://localhost:3000/post
+#### Verbo Post : /post
 
 ##### Esperado
 
@@ -146,7 +146,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 }
 ```
     
-#### Verbo Get : http://localhost:3000/post
+#### Verbo Get : /post
 
 ##### Esperado
 
@@ -179,7 +179,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
    /* ... */
  ]
   ```
-#### Verbo Get : http://localhost:3000/post/:id
+#### Verbo Get : /post/:id
 
 ##### Esperado
 
@@ -208,7 +208,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
    ]
  }
   ```
-#### Verbo Put : http://localhost:3000/post/:id
+#### Verbo Put : /post/:id
 
 ##### Esperado
 
@@ -225,7 +225,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
   }
 
  ```
-#### Verbo Delete http://localhost:3000/post/:id
+#### Verbo Delete : /post/:id
 
 ##### Esperado
 
@@ -245,7 +245,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 - Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http 204.
 
 
-#### Verbo Get http://localhost:3000/post/search?q=:searchTerm
+#### Verbo Get : /post/search?q=searchTerm
 
 ##### Esperado
 
@@ -254,7 +254,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
 - O query params da requisição deverá seguir o formato abaixo:
 
 ```json
-    http://localhost:PORT/post/search?q=vamos
+  http://localhost:PORT/post/search?q=vamos
 ```
 - Se a buscar for pelo title o resultado retornado deverá ser conforme exibido abaixo, com um status http 200.
 
