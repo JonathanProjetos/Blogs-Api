@@ -141,7 +141,7 @@ Nesta aplicação foi desenvolvido uma API e um banco de dados, com intuito de p
  ```json
 {
   "title": "guia",
-  "content": "A todo momento procuramos maneira de diversificar nossas postagens",
+  "content": "A todo momento procuramos maneiras de diversificar nossas postagens",
   "categoryIds": [1, 2]
 }
 ```
